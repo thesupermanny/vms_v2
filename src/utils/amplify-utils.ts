@@ -4,6 +4,14 @@ import outputs from '@/../../amplify_outputs.json'; // Importing Amplify configu
 import { cookies } from 'next/headers'; // Importing cookies utility from Next.js
 import { getCurrentUser } from 'aws-amplify/auth/server'; // Importing server-side authentication utility from AWS Amplify
 
+import { generateServerClientUsingCookies } from '@aws-amplify/adapter-nextjs/data';
+import { Schema } from '../../amplify/data/resource';
+
+export const cookieBasedClient = generateServerClientUsingCookies<Schema>({
+  config: outputs,
+  cookies,
+});
+
 // Creating a server runner with Amplify configuration
 export const { runWithAmplifyServerContext } = createServerRunner({
   config: outputs,

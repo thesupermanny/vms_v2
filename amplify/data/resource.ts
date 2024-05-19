@@ -11,7 +11,7 @@ const schema = a.schema({
   Customer: a
     .model({
       customerId: a.id().required(),
-      name: a.string(),
+      name: a.string().required(),
       email: a.string(),
       phoneNumber: a.string(),
       address: a.string(),
@@ -39,8 +39,7 @@ const schema = a.schema({
   Claim: a
     .model({
       claimId: a.id().required(),
-      description: a.string(),
-      status: a.enum(['OPEN', 'CLOSED']),
+      status: a.enum(['IN PROGRESS', 'SUBMITTED']),
       customerId: a.id().required(),
       customer: a.belongsTo('Customer', 'customerId'),
       appeals: a.hasMany('Appeal', 'claimId'),
@@ -75,32 +74,6 @@ export const data = defineData({
     defaultAuthorizationMode: 'userPool',
   },
 });
-
-// const schema = a.schema({
-//   Customer: a.model({
-//     name: a.string().required(),
-//     email: a.string().required(),
-//     address: a.string().required(),
-//     phone: a.string(),
-//     notes: a.hasMany('Note', 'customerId'),
-//   }),
-
-//   Note: a.model({
-//     customerId: a.id(),
-//     title: a.string().required(),
-//     content: a.string().required(),
-//     customer: a.belongsTo('Customer', 'customerId'),
-//   }),
-// });
-
-// export type Schema = ClientSchema<typeof schema>;
-
-// export const data = defineData({
-//   schema,
-//   authorizationModes: {
-//     defaultAuthorizationMode: 'iam',
-//   },
-// });
 
 /*== STEP 2 ===============================================================
 Go to your frontend source code. From your client-side code, generate a

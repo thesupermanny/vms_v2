@@ -9,8 +9,6 @@ import { signOut } from 'aws-amplify/auth';
 
 export default function NavBar({ isSignedIn }: { isSignedIn: boolean }) {
   const [authCheck, setAuthCheck] = useState(isSignedIn); // State to keep track of authentication status
-  // console.log('Is signed in?', isSignedIn);
-  // console.log('Auth check?', signOut);
 
   const router = useRouter(); // Hook to manage routing
 
@@ -23,7 +21,7 @@ export default function NavBar({ isSignedIn }: { isSignedIn: boolean }) {
           break;
         case 'signedOut':
           setAuthCheck(false); // Update authCheck to false on sign-out event
-          router.push('/'); // Redirect to home page
+          router.push('/signin'); // Redirect to signin page
           break;
       }
     });
@@ -42,10 +40,11 @@ export default function NavBar({ isSignedIn }: { isSignedIn: boolean }) {
     {
       href: '/',
       label: 'Home',
+      loggedIn: true, // This route is only accessible when logged in
     },
     {
-      href: '/add',
-      label: 'Add note',
+      href: '/add-customer',
+      label: 'Add Customer',
       loggedIn: true, // This route is only accessible when logged in
     },
   ];
@@ -61,6 +60,7 @@ export default function NavBar({ isSignedIn }: { isSignedIn: boolean }) {
         justifyContent='space-between'
         alignItems='center'
         padding='1rem'
+        backgroundColor='lightgray'
       >
         <Flex as='nav' alignItems='center' gap='3rem' margin='0 2rem'>
           {routes.map((route) => (
