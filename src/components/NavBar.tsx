@@ -47,6 +47,11 @@ export default function NavBar({ isSignedIn }: { isSignedIn: boolean }) {
       label: 'Add Customer',
       loggedIn: true, // This route is only accessible when logged in
     },
+    {
+      href: '/add-customer',
+      label: 'New Phone Queue',
+      loggedIn: true, // This route is only accessible when logged in
+    },
   ];
 
   const routes = defaultRoutes.filter(

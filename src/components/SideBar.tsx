@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const SideBar: React.FC = () => {
   return (
-    <div className='h-screen w-64 bg-gray-500 text-white flex flex-col'>
+    <div className='w-64 bg-gray-500 text-white flex flex-col h-full'>
       <nav className='flex-grow'>
         <ul>
           <li className='p-4 hover:bg-gray-700'>

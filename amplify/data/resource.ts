@@ -12,6 +12,9 @@ const customerModel = a
   .model({
     customerId: a.id().required(),
     name: a.string().required(),
+    dodid: a.string(),
+    dob: a.date(),
+    ssn: a.string(),
     email: a.string(),
     phoneNumber: a.string(),
     address: a.string(),
