@@ -58,8 +58,8 @@ const claimModel = a
 const claimItemModel = a
   .model({
     claimItemId: a.id().required(),
+    type: a.enum(['NEW', 'INCREASE']),
     description: a.string().required(),
-    amount: a.float().required(),
     claimId: a.id().required(),
     claim: a.belongsTo('Claim', 'claimId'),
   })
